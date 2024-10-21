@@ -55,6 +55,8 @@
 	var/resident_key_type
 	/// The required role of the resident
 	var/resident_role
+	/// The requied advclass of the resident
+	var/resident_advclass
 
 	damage_deflection = 10
 
@@ -71,6 +73,14 @@
 	if(resident_role)
 		var/datum/job/job = SSjob.name_occupations[human.job]
 		if(job.type != resident_role)
+			return FALSE
+	if(resident_advclass)
+		if(!human.advjob)
+			return FALSE
+		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
+		if(!advclass)
+			return FALSE
+		if(advclass.type != resident_advclass)
 			return FALSE
 	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
 	if(alert != "Yes")
@@ -930,3 +940,43 @@
 
 /obj/structure/mineral_door/wood/towner/generic/two_keys
 	resident_key_amount = 2
+
+/obj/structure/mineral_door/wood/towner/blacksmith
+	resident_advclass = /datum/advclass/blacksmith
+	lockid = "towner_blacksmith"
+
+/obj/structure/mineral_door/wood/towner/carpenter
+	resident_advclass = /datum/advclass/carpenter
+	lockid = "towner_carpenter"
+
+/obj/structure/mineral_door/wood/towner/cheesemaker
+	resident_advclass = /datum/advclass/cheesemaker
+	lockid = "towner_cheesemaker"
+
+/obj/structure/mineral_door/wood/towner/hunter
+	resident_advclass = /datum/advclass/hunter
+	lockid = "towner_hunter"
+
+/obj/structure/mineral_door/wood/towner/miner
+	resident_advclass = /datum/advclass/miner
+	lockid = "towner_miner"
+
+/obj/structure/mineral_door/wood/towner/farmer
+	resident_advclass = /datum/advclass/farmer
+	lockid = "towner_farmer"
+
+/obj/structure/mineral_door/wood/towner/seamstress
+	resident_advclass = /datum/advclass/seamstress
+	lockid = "towner_seamstress"
+
+/obj/structure/mineral_door/wood/towner/towndoctor
+	resident_advclass = /datum/advclass/towndoctor
+	lockid = "towner_towndoctor"
+
+/obj/structure/mineral_door/wood/towner/woodcutter
+	resident_advclass = /datum/advclass/woodcutter
+	lockid = "towner_woodcutter"
+
+/obj/structure/mineral_door/wood/towner/fisher
+	resident_advclass = /datum/advclass/fisher
+	lockid = "towner_fisher"
