@@ -48,7 +48,58 @@
 
 	var/ghostproof = FALSE	// Set to true to stop dead players passing through closed ones. Only use this for special areas, not generally
 
+	/// Whether to grant a resident_key
+	var/grant_resident_key = FALSE
+	var/resident_key_amount = 1
+	/// The type of a key the resident will get
+	var/resident_key_type
+	/// The required role of the resident
+	var/resident_role
+
 	damage_deflection = 10
+
+/obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
+	if(!grant_resident_key)
+		return FALSE
+	if(!lockid)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human = user
+	if(human.received_resident_key)
+		return FALSE
+	if(resident_role)
+		var/datum/job/job = SSjob.name_occupations[human.job]
+		if(job.type != resident_role)
+			return FALSE
+	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
+	if(alert != "Yes")
+		return
+	if(!grant_resident_key)
+		return
+	var/spare_key = alert(user, "Have I got an extra spare key?", "Home", "Yes", "No")
+	if(!grant_resident_key)
+		return
+	if(spare_key == "Yes")
+		resident_key_amount = 2
+	else
+		resident_key_amount = 1
+	for(var/i in 1 to resident_key_amount)
+		var/obj/item/roguekey/key
+		if(resident_key_type)
+			key = new resident_key_type(get_turf(human))
+		else
+			key = new /obj/item/roguekey(get_turf(human))
+		key.lockid = lockid
+		key.lockhash = lockhash
+		human.put_in_hands(key)
+	human.received_resident_key = TRUE
+	grant_resident_key = FALSE
+	if(resident_key_amount > 1)
+		to_chat(human, span_notice("They're just where I left them..."))
+	else
+		to_chat(human, span_notice("It's just where I left it..."))
+	return TRUE
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -111,6 +162,10 @@
 	if(!base_state)
 		base_state = icon_state
 	air_update_turf(TRUE)
+
+	if(grant_resident_key && !lockid)
+		lockid = "random_lock_id_[rand(1,9999999)]" // I know, not foolproof
+
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
@@ -862,3 +917,16 @@
 	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
 	dir = NORTH
 	locked = TRUE
+
+/obj/structure/mineral_door/wood/towner
+	locked = TRUE
+	keylock = TRUE
+	grant_resident_key = TRUE
+	resident_key_type = /obj/item/roguekey/townie
+	resident_role = /datum/job/roguetown/villager
+	lockid = null //Will be randomized
+
+/obj/structure/mineral_door/wood/towner/generic
+
+/obj/structure/mineral_door/wood/towner/generic/two_keys
+	resident_key_amount = 2

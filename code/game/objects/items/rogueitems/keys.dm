@@ -61,6 +61,12 @@
 	. = ..()
 	lockhash = GLOB.lockids[lockid]
 
+/obj/item/roguekey/townie // For use in round-start available houses in town. Do not use default lockID.
+	name = "town dwelling Key"
+	desc = "The key of some townie's home. Hope it's not lost."
+	icon_state ="brownkey"
+	lockid = "townie"
+
 /obj/item/roguekey/manor
 	name = "manor key"
 	desc = "This key will open any manor doors."
