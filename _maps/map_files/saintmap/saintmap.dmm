@@ -906,6 +906,10 @@
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"dkn" = (
+/obj/structure/table/wood/nice/decorated,
+/turf/open/floor/carpet/royalblack,
+/area/rogue)
 "dkH" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 4
@@ -1011,6 +1015,10 @@
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
+/area/rogue)
+"dzR" = (
+/obj/structure/table/wood/nice,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "dAG" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
@@ -1619,6 +1627,10 @@
 /obj/structure/fluff/walldeco/painting/seraphina,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/manor)
+"fJI" = (
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/woodturned,
+/area/rogue)
 "fJW" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -3235,7 +3247,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
-/turf/open/floor/carpet/royalblack,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "lHD" = (
 /obj/item/reagent_containers/glass/cup/golden,
@@ -3258,6 +3270,7 @@
 /area/rogue)
 "lJn" = (
 /obj/structure/closet/crate/drawer,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "lKO" = (
@@ -5377,7 +5390,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "ubK" = (
-/obj/structure/roguemachine/mail/r,
+/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "udQ" = (
@@ -5559,6 +5572,7 @@
 /area/rogue)
 "vgq" = (
 /obj/structure/table/wood/nice,
+/obj/structure/roguemachine/mail/r,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "vhp" = (
@@ -5633,7 +5647,7 @@
 	dir = 8;
 	icon_state = "torchwall1"
 	},
-/turf/open/floor/rogue/wood,
+/turf/open/floor/rogue/woodturned,
 /area/rogue)
 "vpY" = (
 /obj/structure/fermenting_barrel,
@@ -5732,7 +5746,7 @@
 /obj/structure/fluff/walldeco/rpainting{
 	pixel_y = 32
 	},
-/obj/structure/roguemachine/scomm/r,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "vAR" = (
@@ -45447,9 +45461,9 @@ cAb
 cAb
 rSo
 rAn
-qoX
-qoX
-qoX
+cbF
+cbF
+cbF
 qoX
 qoX
 wiV
@@ -45767,8 +45781,8 @@ dOK
 vVh
 qoX
 qoX
-qoX
 cbF
+njy
 eKi
 qKu
 tBo
@@ -45924,8 +45938,8 @@ sRb
 vVh
 qoX
 pjN
-qoX
 cbF
+njy
 qFi
 nTJ
 jsj
@@ -46081,8 +46095,8 @@ sRb
 vVh
 qoX
 qoX
-qoX
 cbF
+njy
 aOq
 bYS
 jsj
@@ -46239,7 +46253,7 @@ vVh
 qoX
 qoX
 vpS
-cbF
+njy
 hQx
 hQx
 tBo
@@ -70576,7 +70590,7 @@ gUU
 gUU
 vPf
 eFq
-eFq
+dzR
 kXZ
 tBo
 kXZ
@@ -94590,7 +94604,7 @@ gUU
 lQY
 eFq
 aqT
-tXG
+dkn
 cbF
 cbF
 cbF
@@ -94748,7 +94762,7 @@ jfQ
 gmU
 tBo
 mSz
-cbF
+fJI
 wwt
 bHT
 tBo
@@ -95692,7 +95706,7 @@ gUU
 izw
 izw
 tBo
-kWf
+oGr
 oGr
 oGr
 tBo
